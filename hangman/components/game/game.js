@@ -1,8 +1,15 @@
 function getTheWord(index) {
     var words = ['Cat', 'Baseball', 'Java'];
-    return words[index];
+    var words1 = [];
+    words1.push('Cat');
+    words1.push('Baseball');
+    words1.push('Java');
+    return words1[index];
 }
 
+/*
+    draw the hyphen for user to see
+*/
 function DrawHyphens(size) {
     var wordElement = document.querySelector('.word-to-show');
     for (let i = 0; i < size; i++) {
@@ -18,11 +25,29 @@ function getRandomInt(min, max) {
 
 function valueChanged() {
     var inputElement = document.querySelector('#user-input');
-    // inputElement.value = ;
+    var userEnteredLetter = inputElement.value;
+    var letterFound = false;
+    if (userEnteredLetter.length > 1) {
+        alert('enter only one letter.');
+        return;
+    }
+    for (let i = 0; i < wordToUse.length; i++) {
+        var character = wordToUse[i];
+        if (character === userEnteredLetter) {
+            letterFound = true;
+            break;
+        }
+        else {
+        }
+        
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    //do work
-    var wordToUse = getTheWord(getRandomInt(0, 2));
+    // different way
+    var randomIndex = getRandomInt(0, 2);
+    wordToUse = getTheWord(randomIndex);
     DrawHyphens(wordToUse.length);
 });
+
+var wordToUse = undefined;
