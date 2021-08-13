@@ -1,0 +1,9 @@
+.example-menu {
+    display: grid;
+    grid-auto-columns: 60px;
+    grid-auto-rows: 30px;
+    width: 100%;
+    background-color: lightgrey;
+    overflow-y: auto;
+    height: 155px;
+}
