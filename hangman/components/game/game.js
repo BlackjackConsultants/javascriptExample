@@ -1,10 +1,6 @@
 function getTheWord(index) {
     var words = ['Cat', 'Baseball', 'Java'];
-    var words1 = [];
-    words1.push('Cat');
-    words1.push('Baseball');
-    words1.push('Java');
-    return words1[index];
+    return words[index];
 }
 
 /*
