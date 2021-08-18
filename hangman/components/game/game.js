@@ -7,10 +7,13 @@ function getTheWord(index) {
     draw the hyphen for user to see
 */
 function DrawHyphens(size) {
-    var wordElement = document.querySelector('.word-to-show');
+    var value = '';
     for (let i = 0; i < size; i++) {
-        wordElement.textContent = wordElement.textContent + '- ';
+        value = value + '- ';
     }
+    var wordElement = document.querySelector('.word-to-show');
+    wordElement.textContent = value;
+
 }
 
 function getRandomInt(min, max) {

@@ -6,3 +6,7 @@
 .word-to-show {
     background-color: yellow;
 }
+
+body {
+    display: grid;
+}
