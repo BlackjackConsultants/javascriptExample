@@ -10,3 +10,12 @@
 body {
     display: grid;
 }
+
+.you-won-visible {
+    display: none;
+}
+
+.you-won {
+    font-size: 24px;
+    color: green;
+}
