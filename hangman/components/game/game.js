@@ -7,9 +7,10 @@ function getTheWord(index) {
     return words[index];
 }
 
-/*
-    draw the hyphen for user to see
-*/
+/**
+ * draw the hyphen for user to see
+ * @param {*} size 
+ */
 function DrawHyphens(size) {
     wordToShow = '';
     for (let i = 0; i < size; i++) {
@@ -20,12 +21,23 @@ function DrawHyphens(size) {
 
 }
 
+/**
+ *  get a random number
+ * @param {*} min 
+ * @param {*} max 
+ * @returns 
+ */
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
+/**
+ * find letters
+ * @param {*} userEnteredLetter 
+ * @returns 
+ */
 function findLetters(userEnteredLetter) {
     var lettersFound = [];
     for (let i = 0; i < wordToUse.length; i++) {
@@ -38,6 +50,11 @@ function findLetters(userEnteredLetter) {
     return lettersFound;
 }
 
+/**
+ * draw teh word to show. this shows the letters guessed by the user and the hyphes for the ones not guessed yet.
+ * @param {*} lettersFound 
+ * @param {*} userEnteredLetter 
+ */
 function DrawWordToShow(lettersFound, userEnteredLetter) {
     for (let i = 0; i < lettersFound.length; i++) {
         var index = lettersFound[i];
@@ -47,6 +64,9 @@ function DrawWordToShow(lettersFound, userEnteredLetter) {
     wordElement.textContent = wordToShow;
 }
 
+/**
+ * handles after load of a page
+ */
 document.addEventListener("DOMContentLoaded", function (event) {
     // different way
     var randomIndex = getRandomInt(0, 2);
