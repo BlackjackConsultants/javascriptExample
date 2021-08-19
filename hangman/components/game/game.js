@@ -8,7 +8,7 @@ function getTheWord(index) {
 }
 
 /**
- * draw the hyphen for user to see
+ * draw the hyphen for user to see (e.g. - - - - - - - - -)
  * @param {*} size 
  */
 function DrawHyphens(size) {
@@ -52,10 +52,11 @@ function findLetters(userEnteredLetter) {
 
 /**
  * draw teh word to show. this shows the letters guessed by the user and the hyphes for the ones not guessed yet.
+ * (e.g. b - s - b - l l)
  * @param {*} lettersFound 
  * @param {*} userEnteredLetter 
  */
-function DrawWordToShow(lettersFound, userEnteredLetter) {
+function DrawLetterAndHyphen(lettersFound, userEnteredLetter) {
     for (let i = 0; i < lettersFound.length; i++) {
         var index = lettersFound[i];
         wordToShow = wordToShow.replaceAt(index * 2, userEnteredLetter);
@@ -92,7 +93,7 @@ function guessLetterHandler() {
             letterUsedEl.textContent = letterUsedEl.textContent.length === 0 ? userEnteredLetter : letterUsedEl.textContent + ', ' + userEnteredLetter;
         }
         else {
-            DrawWordToShow(lettersFound, userEnteredLetter);
+            DrawLetterAndHyphen(lettersFound, userEnteredLetter);
         }
         if (wordToShow.indexOf('-') == -1) {
             // user won
