@@ -1,4 +1,4 @@
-String.prototype.replaceAt = function(index, replacement) {
+String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
 
@@ -47,29 +47,6 @@ function DrawWordToShow(lettersFound, userEnteredLetter) {
     wordElement.textContent = wordToShow;
 }
 
-function guessLetterHandler() {
-    var inputElement = document.querySelector('#user-input');
-    var userEnteredLetter = inputElement.value;
-    inputElement.value = '';
-    lettersUsed.push(userEnteredLetter);
-    // find letters
-    var lettersFound = findLetters(userEnteredLetter, lettersFound);
-    // track missed letters
-    if (lettersFound.length == 0) {
-        lettersMissed.push(userEnteredLetter);
-        var letterUsedEl = document.querySelector('#lettersUsed');
-            letterUsedEl.textContent = letterUsedEl.textContent.length === 0 ? userEnteredLetter : letterUsedEl.textContent + ', ' + userEnteredLetter;
-    }
-    else {
-        DrawWordToShow(lettersFound, userEnteredLetter);
-    }
-    if (wordToShow.indexOf('-') == -1) {
-        // user won
-        var youWonEl = document.querySelector('.you-won');
-        youWonEl.classList.remove("you-won-visible");
-    }
-}
-
 document.addEventListener("DOMContentLoaded", function (event) {
     // different way
     var randomIndex = getRandomInt(0, 2);
@@ -77,7 +54,40 @@ document.addEventListener("DOMContentLoaded", function (event) {
     DrawHyphens(wordToUse.length);
 });
 
+// handlers
+function guessLetterHandler() {
+    // get user entered letter
+    var inputElement = document.querySelector('#user-input');
+    var userEnteredLetter = inputElement.value;
+    if (lettersUsed.indexOf(userEnteredLetter)) {
+        // letter does not exist
+        inputElement.value = '';
+        lettersUsed.push(userEnteredLetter);
+        // find letters
+        var lettersFound = findLetters(userEnteredLetter, lettersFound);
+        // track missed letters
+        if (lettersFound.length == 0) {
+            lettersMissed.push(userEnteredLetter);
+            var letterUsedEl = document.querySelector('#lettersUsed');
+            letterUsedEl.textContent = letterUsedEl.textContent.length === 0 ? userEnteredLetter : letterUsedEl.textContent + ', ' + userEnteredLetter;
+        }
+        else {
+            DrawWordToShow(lettersFound, userEnteredLetter);
+        }
+        if (wordToShow.indexOf('-') == -1) {
+            // user won
+            var youWonEl = document.querySelector('.you-won');
+            youWonEl.classList.remove("you-won-visible");
+        }
+    }
+    else {
+        // letter used
+        alert('lettered used already.')
+    }
+}
+
+// global variables
 var wordToUse = '';
 var wordToShow = '';
-var lettersUsed = [];
+var lettersUsed = []; // includes all letters good and bad
 var lettersMissed = [];
