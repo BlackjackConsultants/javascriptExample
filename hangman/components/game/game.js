@@ -1,10 +1,30 @@
-String.prototype.replaceAt = function (index, replacement) {
-    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-}
 
+// global variables
+var wordToUse = '';
+var wordToShow = '';
+var lettersUsed = []; // includes all letters good and bad
+var lettersMissed = [];
+
+/**
+ * Gets the word from a list.
+ * @param {*} index 
+ * @returns 
+ */
 function getTheWord(index) {
     var words = ['Cat', 'Baseball', 'Java'];
     return words[index];
+}
+
+/**
+ *  get a random number
+ * @param {*} min 
+ * @param {*} max 
+ * @returns 
+ */
+ function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
 /**
@@ -18,20 +38,9 @@ function DrawHyphens(size) {
     }
     var wordElement = document.querySelector('.word-to-show');
     wordElement.textContent = wordToShow;
-
 }
 
-/**
- *  get a random number
- * @param {*} min 
- * @param {*} max 
- * @returns 
- */
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
+
 
 /**
  * find letters
@@ -107,8 +116,9 @@ function guessLetterHandler() {
     }
 }
 
-// global variables
-var wordToUse = '';
-var wordToShow = '';
-var lettersUsed = []; // includes all letters good and bad
-var lettersMissed = [];
+
+
+String.prototype.replaceAt = function (index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+}
+

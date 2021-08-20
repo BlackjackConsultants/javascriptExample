@@ -3,3 +3,5 @@
 Show the characters as underlined (_ _ _ _) for each letter of the word.
 
 ## 2. As a user i want to guess the letters until game over because i win or loose
+Show a textbox so that i can enter the letter
+
