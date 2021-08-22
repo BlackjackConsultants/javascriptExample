@@ -40,8 +40,6 @@ function DrawHyphens(size) {
     wordElement.textContent = wordToShow;
 }
 
-
-
 /**
  * find letters
  * @param {*} userEnteredLetter 
@@ -94,9 +92,10 @@ function guessLetterHandler() {
         inputElement.value = '';
         lettersUsed.push(userEnteredLetter);
         // find letters
-        var lettersFound = findLetters(userEnteredLetter, lettersFound);
+        var lettersFound = findLetters(userEnteredLetter);
         // track missed letters
         if (lettersFound.length == 0) {
+            // no letters found
             lettersMissed.push(userEnteredLetter);
             var letterUsedEl = document.querySelector('#lettersUsed');
             letterUsedEl.textContent = letterUsedEl.textContent.length === 0 ? userEnteredLetter : letterUsedEl.textContent + ', ' + userEnteredLetter;
@@ -108,6 +107,13 @@ function guessLetterHandler() {
             // user won
             var youWonEl = document.querySelector('.you-won');
             youWonEl.classList.remove("hide");
+        }
+        else {
+            // user did not win
+            if (lettersMissed.length >= 7) {
+                var youWonEl = document.querySelector('.you-lost');
+                youWonEl.classList.remove("hide");
+            }
         }
     }
     else {

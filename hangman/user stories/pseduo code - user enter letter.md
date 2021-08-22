@@ -10,18 +10,20 @@
 
 # WHAT
 
-1. create a function submit handler
-2. for each letter in the chosen word, check if the user typed letter is the same.
-3. if letter found
-4.     show dash and hyphes div
-5.     validateNoDashesExist
-6.     if no dashes exist, then game over. show user won
-7. else
-8.     show in list of missed letters
-9.     validateWrongLetterArray less then 7
-10. validateGameOver     
-11. variable that store dash and right letters
-12. create an array of wrong characters.
-13. 
+1. create ui part
+2. create a function submit handler
+3. first check if letter has been used.
+4. for each letter in the chosen word, check if the user typed letter is the same.
+5. if letter found
+6.     show dash and hyphes div
+7.     validateNoDashesExist
+8.     if no dashes exist, then game over. show user won
+9. else
+10.    show in list of missed letters
+11.    validateWrongLetterArray less then 7
+12. validateGameOver     
+13. variable that store dash and right letters
+14. create an array of wrong characters.
+ 
 
 
