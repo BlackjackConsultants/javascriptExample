@@ -107,7 +107,7 @@ function guessLetterHandler() {
         if (wordToShow.indexOf('-') == -1) {
             // user won
             var youWonEl = document.querySelector('.you-won');
-            youWonEl.classList.remove("you-won-visible");
+            youWonEl.classList.remove("hide");
         }
     }
     else {
