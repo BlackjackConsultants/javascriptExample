@@ -11,8 +11,8 @@ function isCyclic(obj) {
         var oldindex = stack.indexOf(obj);
         var l1 = keys.join('.') + '.' + key;
         var l2 = keys.slice(0, oldindex + 1).join('.');
-        document.writeln('CIRCULAR: ' + l1 + ' = ' + l2 + ' = ' + obj);
-        document.writeln(obj);
+        console.debug('CIRCULAR: ' + l1 + ' = ' + l2 + ' = ' + obj);
+        console.debug(obj);
         detected = true;
         return;
       }
