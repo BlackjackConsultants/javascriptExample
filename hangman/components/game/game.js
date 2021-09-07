@@ -101,8 +101,10 @@ function guessLetterHandler() {
             letterUsedEl.textContent = letterUsedEl.textContent.length === 0 ? userEnteredLetter : letterUsedEl.textContent + ', ' + userEnteredLetter;
         }
         else {
+            // letter was found
             DrawLetterAndHyphen(lettersFound, userEnteredLetter);
         }
+        // check if game is over
         if (wordToShow.indexOf('-') == -1) {
             // user won
             var youWonEl = document.querySelector('.you-won');
