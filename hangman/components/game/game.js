@@ -66,10 +66,14 @@ function findLetters(userEnteredLetter) {
 function DrawLetterAndHyphen(lettersFound, userEnteredLetter) {
     for (let i = 0; i < lettersFound.length; i++) {
         var index = lettersFound[i];
-        wordToShow = wordToShow.replaceAt(index * 2, userEnteredLetter);
+        wordToShow = replaceLetter(wordToShow, index * 2, userEnteredLetter);
     }
     var wordElement = document.querySelector('.word-to-show');
     wordElement.textContent = wordToShow;
+}
+
+function replaceLetter(value, index, replacement) {
+    return value.substr(0, index) + replacement + value.substr(index + replacement.length);
 }
 
 /**
@@ -126,7 +130,5 @@ function guessLetterHandler() {
 
 
 
-String.prototype.replaceAt = function (index, replacement) {
-    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-}
+
 
