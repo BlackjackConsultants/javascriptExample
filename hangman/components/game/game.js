@@ -127,8 +127,3 @@ function guessLetterHandler() {
         alert('lettered used already.')
     }
 }
-
-
-
-
-
