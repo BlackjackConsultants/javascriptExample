@@ -1,13 +1,13 @@
 let playerOneTurn = true;
+let cellLocation;
 
-function DrawXorO(cellId) {
-    var cellElement = document.querySelector("." + cellId);
-    var cellValue = (playerOneTurn == true) ? "X" : "O";
-    cellElement.textConent = cellValue;
-    playerOneTurn != playerOneTurn;
+function DrawXorO(element) {
+    cellLocation = element.getAttribute('name');
+    let cellValue = (playerOneTurn == true) ? 'X' : 'O';
+    element.textContent = cellValue;
+    playerOneTurn = !playerOneTurn;
 }
 
 function clickHandler(element) {
-    // draw x or why
-    DrawXorO(element.id)
+    DrawXorO(element)
 }
