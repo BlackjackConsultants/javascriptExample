@@ -1,0 +1,18 @@
+.board {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    background-color: darkblue;
+    height: 100%;
+    width: 100%;
+    grid-gap: 5px;
+}
+
+.cell {
+    background-color: grey;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
