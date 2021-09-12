@@ -34,7 +34,7 @@ function DrawBoard() {
 }
 
 function SaveBoardState() {
-    boardState[col][row] = playerOneTurn == true ? 'x' : 'o' ;
+    boardState[row][col] = playerOneTurn == true ? 'x' : 'o' ;
 }
 
 function clickHandler(element) {
