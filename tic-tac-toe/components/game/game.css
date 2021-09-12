@@ -17,3 +17,23 @@ body, html {
     height: 100%;
     width: 100%;
 }
+
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 50%;
+    gap: 15px;
+}
+
+.current-player {
+    flex-basis: 1;
+}
+
+.board {
+    flex-basis: auto;
+}
+
+.game-results {
+    flex-basis: 1;
+}

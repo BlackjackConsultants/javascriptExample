@@ -1,13 +1,54 @@
 let playerOneTurn = true;
 let cellLocation;
+let boardState = [];
+let row;
+let col;
 
-function DrawXorO(element) {
+function Initialize() {
+    boardState.push(["", "", ""],["", "", ""],["", "", ""]);
+}
+
+function ValidatePlay(element) {
+    // get location
     cellLocation = element.getAttribute('name');
-    let cellValue = (playerOneTurn == true) ? 'X' : 'O';
-    element.textContent = cellValue;
-    playerOneTurn = !playerOneTurn;
+    row = parseInt(cellLocation.substr(0,1));
+    col = parseInt(cellLocation.substr(1,1));
+    // validate if cell is taken.
+    let cellValue = boardState[row][col];
+    if (cellValue != "") {
+        alert("cell taken");
+        return;
+    }
+    // validate if game over
+
+}
+
+function DrawBoard() {
+    for (let col = 0; col < 3; col++) {
+        for (let row = 0; row < 3; row++) {
+            let cellElement = document.querySelector('[name="'+ col.toString() + row.toString() + '"]');            
+            cellElement.textContent = boardState[col, row];
+        }        
+    }
+}
+
+function SaveBoardState() {
+    boardState[col][row] = playerOneTurn == true ? 'x' : 'o' ;
 }
 
 function clickHandler(element) {
-    DrawXorO(element)
+    ValidatePlay(element)
+    SaveBoardState();
+    DrawBoard();
+    playerOneTurn = !playerOneTurn;
+    ShowPlayerNumber();
 }
+
+function ShowPlayerNumber() {
+    let playerTurnElement = document.querySelector('.player-number');
+    let playerNumber = playerOneTurn == true ? 1 : 2 ;
+    playerTurnElement.textContent = playerNumber;
+}
+
+Initialize();
+ShowPlayerNumber();
