@@ -36,13 +36,13 @@ function DrawBoard() {
 /** 
  * saves the user play on board state
  **/  
-function SaveUserPlayOnBoard() {
+function c() {
     boardState[row][col] = playerOneTurn == true ? 'x' : 'o' ;
 }
 
 function clickHandler(element) {
     ValidatePlay(element)
-    SaveBoardState();
+    SavePlayerMove();
     DrawBoard();
     ShowPlayerNumber();
     playerOneTurn = !playerOneTurn;
