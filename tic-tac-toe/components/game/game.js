@@ -36,7 +36,7 @@ function DrawBoard() {
 /** 
  * saves the user play on board state
  **/  
-function c() {
+function SavePlayerMove() {
     boardState[row][col] = playerOneTurn == true ? 'x' : 'o' ;
 }
 
