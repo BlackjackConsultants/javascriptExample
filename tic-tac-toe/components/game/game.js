@@ -27,7 +27,8 @@ function DrawBoard() {
     for (let col = 0; col < 3; col++) {
         for (let row = 0; row < 3; row++) {
             let cellElement = document.querySelector('[name="'+ col.toString() + row.toString() + '"]');            
-            cellElement.textContent = boardState[col, row];
+            cellElement.textContent = boardState[col][row];
+            console.log(`col: ${col} row: ${row} value: ${cellElement.textContent} el name: ${cellElement.getAttribute('name')}`)
         }        
     }
 }
