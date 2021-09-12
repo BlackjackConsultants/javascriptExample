@@ -24,8 +24,8 @@ function ValidatePlay(element) {
 }
 
 function DrawBoard() {
-    for (let col = 0; col < 3; col++) {
-        for (let row = 0; row < 3; row++) {
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
             let cellElement = document.querySelector('[name="'+ col.toString() + row.toString() + '"]');            
             cellElement.textContent = boardState[col][row];
             console.log(`col: ${col} row: ${row} value: ${cellElement.textContent} el name: ${cellElement.getAttribute('name')}`)
@@ -33,7 +33,10 @@ function DrawBoard() {
     }
 }
 
-function SaveBoardState() {
+/** 
+ * saves the user play on board state
+ **/  
+function SaveUserPlayOnBoard() {
     boardState[row][col] = playerOneTurn == true ? 'x' : 'o' ;
 }
 
@@ -41,8 +44,8 @@ function clickHandler(element) {
     ValidatePlay(element)
     SaveBoardState();
     DrawBoard();
-    playerOneTurn = !playerOneTurn;
     ShowPlayerNumber();
+    playerOneTurn = !playerOneTurn;
 }
 
 function ShowPlayerNumber() {
