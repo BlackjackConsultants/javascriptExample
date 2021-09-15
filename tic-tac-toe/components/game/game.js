@@ -3,9 +3,43 @@ let cellLocation;
 let boardState = [];
 let row;
 let col;
+let winningPlayer;
 
 function Initialize() {
     boardState.push(["", "", ""], ["", "", ""], ["", "", ""]);
+}
+
+/**
+ * returns the winner player.
+ */
+function validateWinner() {
+    let values = '';
+    // validate col
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+            values = values + boardState[col][row];
+        }
+        if (values === 'xxx') {
+            return 1;
+        }
+        else if (values === '000') {
+            return 2
+        }
+    }
+    // validate rows
+    values = '';
+    for (let col = 0; col < 3; col++) {
+        for (let row = 0; row < 3; row++) {
+            values = values + boardState[col][row];
+        }
+        if (values === 'xxx') {
+            return 1;
+        }
+        else if (values === '000') {
+            return 2
+        }
+    }
+    return -1;
 }
 
 /**
@@ -13,7 +47,7 @@ function Initialize() {
  * @param {*} element 
  * @returns 
  */
-function ValidatePlay(element) {
+function ValidateEmptyCell(element) {
     // get location
     cellLocation = element.getAttribute('name');
     row = parseInt(cellLocation.substr(0, 1));
@@ -24,7 +58,6 @@ function ValidatePlay(element) {
         alert("cell taken");
         return false;
     }
-    // validate if game over
     return true;
 }
 
@@ -46,12 +79,18 @@ function SavePlayerMove() {
 }
 
 function clickHandler(element) {
-    if (ValidatePlay(element) == true) {
+    if (ValidateEmptyCell(element) == true) {
         // validate passed
         SavePlayerMove();
         DrawBoard();
-        ShowPlayerNumber();
-        playerOneTurn = !playerOneTurn;
+        winningPlayer = validateWinner();
+        if (winningPlayer == -1) {
+            ShowPlayerNumber();
+            playerOneTurn = !playerOneTurn;
+        }
+        else {
+            alert(`Player ${winningPlayer} has won the game`);
+        }
     }
 }
 
