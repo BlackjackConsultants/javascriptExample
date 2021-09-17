@@ -4,39 +4,35 @@ let boardState = [];
 let row;
 let col;
 let winningPlayer;
+const emptyCellValue = '.';
 
 function Initialize() {
-    boardState.push(["", "", ""], ["", "", ""], ["", "", ""]);
+    boardState.push([emptyCellValue, emptyCellValue, emptyCellValue], [emptyCellValue, emptyCellValue, emptyCellValue], [emptyCellValue, emptyCellValue, emptyCellValue]);
 }
 
 /**
  * returns the winner player.
  */
 function validateWinner() {
-    let values = '';
+    let rowvalues = '';
+    let colvalues = '';
     // validate col
     for (let row = 0; row < 3; row++) {
         for (let col = 0; col < 3; col++) {
-            values = values + boardState[col][row];
-        }
-        if (values === 'xxx') {
-            return 1;
-        }
-        else if (values === '000') {
-            return 2
-        }
-    }
-    // validate rows
-    values = '';
-    for (let col = 0; col < 3; col++) {
-        for (let row = 0; row < 3; row++) {
-            values = values + boardState[col][row];
-        }
-        if (values === 'xxx') {
-            return 1;
-        }
-        else if (values === '000') {
-            return 2
+            colvalues = colvalues + boardState[col][row];
+            rowvalues = rowvalues + boardState[row][col];
+            if (col === 2) {
+                console.log(`appending colvalues -> ${colvalues}`);
+                console.log(`appending rowvalues -> ${rowvalues}`);
+                if (rowvalues === 'xxx' || colvalues === 'xxx') {
+                    return 1;
+                }
+                else if (rowvalues === 'ooo' || colvalues === 'ooo') {
+                    return 2
+                }
+                rowvalues = '';
+                colvalues = '';
+            }
         }
     }
     return -1;
@@ -54,7 +50,7 @@ function ValidateEmptyCell(element) {
     col = parseInt(cellLocation.substr(1, 1));
     // validate if cell is taken.
     let cellValue = boardState[row][col];
-    if (cellValue != "") {
+    if (cellValue != emptyCellValue) {
         alert("cell taken");
         return false;
     }
@@ -65,8 +61,8 @@ function DrawBoard() {
     for (let row = 0; row < 3; row++) {
         for (let col = 0; col < 3; col++) {
             let cellElement = document.querySelector('[name="' + col.toString() + row.toString() + '"]');
-            cellElement.textContent = boardState[col][row];
-            console.log(`col: ${col} row: ${row} value: ${cellElement.textContent} el name: ${cellElement.getAttribute('name')}`)
+            cellElement.textContent = (boardState[col][row] == emptyCellValue) ? '' :  boardState[col][row];
+            // console.log(`col: ${col} row: ${row} value: ${cellElement.textContent} el name: ${cellElement.getAttribute('name')}`)
         }
     }
 }
