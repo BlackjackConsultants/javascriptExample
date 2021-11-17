@@ -1,0 +1,27 @@
+.user-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.word-to-show {
+    background-color: yellow;
+}
+
+body {
+    display: grid;
+}
+
+.hide {
+    display: none;
+}
+
+.you-won {
+    font-size: 24px;
+    color: green;
+}
+
+
+.you-lost {
+    font-size: 24px;
+    color: red;
+}

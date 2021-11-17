@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./game.css">
+</head>
+
+<body>
+    <div class="main-layout">
+        <div class="current-player">Current Player: <span class="player-number"></span></div>
+        <div class="board">
+            <div name="00" class="cell" onclick="clickHandler(this)"></div>
+            <div name="01" class="cell" onclick="clickHandler(this)"></div>
+            <div name="02" class="cell" onclick="clickHandler(this)"></div>
+            <div name="10" class="cell" onclick="clickHandler(this)"></div>
+            <div name="11" class="cell" onclick="clickHandler(this)"></div>
+            <div name="12" class="cell" onclick="clickHandler(this)"></div>
+            <div name="20" class="cell" onclick="clickHandler(this)"></div>
+            <div name="21" class="cell" onclick="clickHandler(this)"></div>
+            <div name="22" class="cell" onclick="clickHandler(this)"></div>
+        </div>
+        <div class="game-results">Player 1 won</div>
+    </div>
+
+    <script src='./game.js' defer></script>
+</body>
+
+</html>
