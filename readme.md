@@ -4,3 +4,7 @@ This project will be used to show how pure javascript, html and css application 
 ## References
 You can get good tips on layout for grids here:
 https://css-tricks.com/snippets/css/complete-guide-grid/
+
+
+## About
+This is a sample was produced by [Blackjack Consultants](https://blackjackconsultants.com)
